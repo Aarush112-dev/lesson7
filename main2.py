@@ -24,6 +24,9 @@ class Stack():
     def size(self):
         return len(self.stack)
     
+    def clear(self):
+        self.stack = []
+    
     def display(self):
         print(self.stack)
 
@@ -31,16 +34,20 @@ class Queue:
     def __init__(self,size):
         self.size = size
         self.queue = Stack(size)
+        self.queue2 = Stack(size)
 
     def enqueue(self,item):
-        self.queue.add(item)
+        if self.queue.size() >= self.size:
+            print("Queue is full")
+        else:
+            self.queue.add(item)
     
     def dequeue(self):
         self.queue.pop()
     
     def clear_queue(self):
         if self.queue.size() > 0:
-            self.queue = []
+            self.queue.clear()
         elif self.queue.size() == 0:
             print("Nothing to clear in queue")
 
